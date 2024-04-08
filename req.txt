@@ -1,0 +1,11 @@
+1. Make a list with all cards -> it should be something like 4 diamonds -done
+2. Make 2 lists for player1 and player2 -done
+3. Choose a card random from the list and assign it once to the first player list and once to the second player list -done
+   This step is repeated till we have a list with 26 cards and another list with 26 cards -done
+   At every adding to a new list we need to remove the card from the card list -done
+4. Now we start the game by comparing cards
+   We should split the card name and take the first part and transform it into an int
+   For the [j, q, k, a] -> we will define a dictionary with values
+5. If a card is bigger than another card then we remove it from the losing player list and add both to the winning list
+6. Now if we have razboi, then make a method to count the number of cards for razboi. CHeck if both lists have cards, and if not, choose the number based on the min length list
+   	
