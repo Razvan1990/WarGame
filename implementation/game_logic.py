@@ -28,13 +28,7 @@ class GameLogic:
         index_player1 = 0
         index_player2 = 0
         while True:
-            print("Index player1", index_player1)
-            print("Index player2", index_player2)
             # make check here again
-            if index_player1 >= len(player1_list) - 1:
-                index_player1 = 0
-            if index_player2 >= len(player2_list) - 1:
-                index_player2 = 0
             is_player1_list_empty = self.check_player_list_length(player1_list)
             is_player2_list_empty = self.check_player_list_length(player2_list)
             if is_player1_list_empty:
@@ -42,6 +36,12 @@ class GameLogic:
             if is_player2_list_empty:
                 return f"{player1_name} has won the game"
             # need to use insert for addition to specify index
+            if index_player1 >= len(player1_list) - 1 or (index_player1 == 0 and len(player1_list) == 0):
+                index_player1 = 0
+            if index_player2 >= len(player2_list) - 1 or (index_player2 == 0 and len(player2_list) == 0):
+                index_player2 = 0
+            print("Index player1", index_player1)
+            print("Index player2", index_player2)
             print(player1_list)
             print(player2_list)
             value_player1 = self.get_card_value(player1_list[index_player1])
@@ -372,17 +372,25 @@ class GameLogic:
                         if index_player1 + len(player2_list) - 1 > len(player1_list):
                             value_player1_temp = len(player2_list)
                             for i in range(index_player1, index_player1 + len(player2_list)):
+                                if i >= len(player1_list) - 1:
+                                    i = 0
                                 list_cards_added_player1.append(player1_list[i])
                                 value_player1_temp -= 1
                                 index_player1 += 1
+                                if index_player1 >= len(player1_list) - 1:
+                                    index_player1 = 0
                         elif index_player1 + len(player2_list) - 1 < len(player1_list):
                             value_player1_temp = len(player2_list)
                             for i in range(index_player1, len(player1_list)):
                                 list_cards_added_player1.append(player1_list[i])
                                 value_player1_temp -= 1
                             index_player1 = 0
-                            for i in range(0, value_player1_temp):
-                                list_cards_added_player1.append(player1_list[i])
+                            if value_player1_temp < len(player2_list) - len(list_cards_added_player1):
+                                for i in range(0, value_player1_temp):
+                                    list_cards_added_player1.append(player1_list[i])
+                            else:
+                                for i in range(0, len(player2_list) - len(list_cards_added_player1)):
+                                    list_cards_added_player1.append(player1_list[i])
                         value_player1 = self.get_card_value(list_cards_added_player1[len(player2_list) - 1])
                         value_player2 = self.get_card_value(player2_list[index_player2 - 1])
                         value_player1_copy = value_player1
@@ -412,18 +420,26 @@ class GameLogic:
                     if len(player1_list) < len(player2_list):
                         if index_player2 + len(player1_list) - 1 > len(player2_list):
                             value_player2_temp = len(player1_list)
-                            for i in range(index_player2, len(player2_list)):
+                            for i in range(index_player2, index_player2 + len(player1_list)):
+                                if i >= len(player2_list) - 1:
+                                    i = 0
                                 list_cards_added_player2.append(player2_list[i])
                                 value_player2_temp -= 1
                                 index_player2 += 1
+                                if index_player2 >= len(player2_list) - 1:
+                                    index_player2 = 0
                         elif index_player2 + len(player1_list) - 1 < len(player2_list):
                             value_player2_temp = len(player1_list)
                             for i in range(index_player2, len(player2_list)):
                                 list_cards_added_player2.append(player2_list[i])
                                 value_player2_temp -= 1
                             index_player2 = 0
-                            for i in range(0, value_player2_temp):
-                                list_cards_added_player2.append(player2_list[i])
+                            if value_player2_temp < len(player1_list) - len(list_cards_added_player2):
+                                for i in range(0, value_player2_temp):
+                                    list_cards_added_player2.append(player1_list[i])
+                            else:
+                                for i in range(0, len(player1_list) - len(list_cards_added_player2)):
+                                    list_cards_added_player2.append(player2_list[i])
                         value_player2 = self.get_card_value(list_cards_added_player2[len(player1_list) - 1])
                         value_player1 = self.get_card_value(player1_list[index_player1 - 1])
                         value_player1_copy = value_player1
@@ -474,7 +490,7 @@ class GameLogic:
                         if len(player2_list) > len(player1_list):
                             random_card_number = random.randint(0, len(player1_list) - 1)
                             for i in range(0, random_card_number):
-                                list_cards_added_player2.append(player2_list)
+                                list_cards_added_player2.append(player2_list[i])
                             for i in range(0, random_card_number):
                                 player1_list.insert(0, player2_list[i])
                                 index_player1 += 1
