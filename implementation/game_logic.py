@@ -95,7 +95,6 @@ class GameLogic:
                         list_cards_added_player2.append(player2_list[i])
                     value_player1 = self.get_card_value(list_cards_added_player1[len(list_cards_added_player1) - 1])
                     value_player2 = self.get_card_value(list_cards_added_player2[len(list_cards_added_player2) - 1])
-
                     # b. now we get the result and see what happens
                     score = self.compute_game(value_player1, value_player2)
                     if score == 1:
@@ -116,8 +115,6 @@ class GameLogic:
                             index_player2 = abs(len(player2_list) - index_player2)
                         elif index_player2 == len(player2_list) - 1:
                             index_player2 = 0
-                        else:
-                            index_player2 -= value_player2 + 1
                         continue
                     if score == 2:
                         print("{} has won with {} versus {}".format(player2_name, value_player2, value_player1))
