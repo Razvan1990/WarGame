@@ -32,9 +32,11 @@ class GameLogic:
             is_player1_list_empty = self.check_player_list_length(player1_list)
             is_player2_list_empty = self.check_player_list_length(player2_list)
             if is_player1_list_empty:
-                return f"{player2_name} has won the game"
+                print( f"{player2_name} has won the game")
+                return
             if is_player2_list_empty:
-                return f"{player1_name} has won the game"
+                print( f"{player1_name} has won the game")
+                return
             # need to use insert for addition to specify index
             if index_player1 >= len(player1_list) - 1 or (index_player1 == 0 and len(player1_list) == 0):
                 index_player1 = 0
@@ -59,7 +61,8 @@ class GameLogic:
                 player2_list.remove(player2_list[index_player2])
                 is_player2_list_empty = self.check_player_list_length(player2_list)
                 if is_player2_list_empty:
-                    return f"{player1_name} has won the game"
+                    print(f"{player1_name} has won the game")
+                    return
                 if index_player1 >= len(player1_list) - 2:
                     index_player1 = 0
                 else:
@@ -73,7 +76,8 @@ class GameLogic:
                 # make here another check before the update
                 is_player1_list_empty = self.check_player_list_length(player1_list)
                 if is_player1_list_empty:
-                    return f"{player2_name} has won the game"
+                    print(f"{player2_name} has won the game")
+                    return
                 if index_player2 >= len(player2_list) - 2:
                     index_player2 = 0
                 else:
@@ -110,7 +114,8 @@ class GameLogic:
                             # we need to check if index_player2 is too big now
                         is_player2_list_empty = self.check_player_list_length(player2_list)
                         if is_player2_list_empty:
-                            return f"{player1_name} has won the game"
+                            print( f"{player1_name} has won the game")
+                            return
                         if index_player2 > len(player2_list) - 1:
                             index_player2 = abs(len(player2_list) - index_player2)
                         elif index_player2 == len(player2_list) - 1:
@@ -124,7 +129,8 @@ class GameLogic:
                             # we need to check if index_player1 is too big now
                         is_player1_list_empty = self.check_player_list_length(player1_list)
                         if is_player1_list_empty:
-                            return f"{player2_name} has won the game"
+                            print( f"{player2_name} has won the game")
+                            return
                         if index_player1 > len(player1_list) - 1:
                             index_player1 = abs(len(player1_list) - index_player1)
                         elif index_player1 == len(player1_list) - 1:
@@ -178,7 +184,8 @@ class GameLogic:
                             player2_list.remove(card)
                         is_player2_list_empty = self.check_player_list_length(player2_list)
                         if is_player2_list_empty:
-                            return f"{player1_name} has won the game"
+                            print(f"{player1_name} has won the game")
+                            return
                             # we need to check if index_player2 is too big now
                         if index_player2 > len(player2_list) - 1:
                             index_player2 = abs(len(player2_list) - index_player2)
@@ -198,7 +205,8 @@ class GameLogic:
                             # we need to check if index_player1 is too big now
                         is_player1_list_empty = self.check_player_list_length(player1_list)
                         if is_player1_list_empty:
-                            return f"{player2_name} has won the game"
+                            print( f"{player2_name} has won the game")
+                            return
                         if index_player1 > len(player1_list) - 1:
                             index_player1 = abs(len(player1_list) - index_player1)
                         elif index_player1 == len(player1_list) - 1:
@@ -247,7 +255,8 @@ class GameLogic:
                             # we need to check if index_player2 is too big now
                         is_player2_list_empty = self.check_player_list_length(player2_list)
                         if is_player2_list_empty:
-                            return f"{player1_name} has won the game"
+                            print( f"{player1_name} has won the game")
+                            return
                         if index_player2 > len(player2_list) - 1:
                             index_player2 = abs(len(player2_list) - index_player2)
                         elif index_player2 == len(player2_list) - 1:
@@ -265,7 +274,8 @@ class GameLogic:
                             player1_list.remove(card)
                         is_player1_list_empty = self.check_player_list_length(player1_list)
                         if is_player1_list_empty:
-                            return f"{player2_name} has won the game"
+                            print( f"{player2_name} has won the game")
+                            return
                         # we need to check if index_player1 is too big now
                         if index_player1 > len(player1_list) - 1:
                             index_player1 = abs(len(player1_list) - index_player1)
@@ -322,7 +332,8 @@ class GameLogic:
                             player2_list.remove(card)
                         is_player2_list_empty = self.check_player_list_length(player2_list)
                         if is_player2_list_empty:
-                            return f"{player1_name} has won the game"
+                            print( f"{player1_name} has won the game")
+                            return
                             # we need to check if index_player2 is too big now
                         if index_player2 > len(player2_list) - 1:
                             index_player2 = abs(len(player2_list) - index_player2)
@@ -341,7 +352,8 @@ class GameLogic:
                             player1_list.remove(card)
                         is_player1_list_empty = self.check_player_list_length(player1_list)
                         if is_player1_list_empty:
-                            return f"{player2_name} has won the game"
+                            print( f"{player2_name} has won the game")
+                            return
                             # we need to check if index_player1 is too big now
                         if index_player1 > len(player1_list) - 1:
                             index_player1 = abs(len(player1_list) - index_player1)
@@ -471,6 +483,7 @@ class GameLogic:
                     list_cards_added_player1 = []
                     list_cards_added_player2 = []
                     if score == 1:
+                        print("{} has won with {} versus {}".format(player1_name, player1_list[player1_card_index], player2_list[player2_card_index]))
                         # here we will pick a number of random cards to add or remove to the list based on the list with less elements
                         if len(player1_list) > len(player2_list):
                             random_card_number = random.randint(0, len(player2_list) - 1)
@@ -496,6 +509,8 @@ class GameLogic:
                                 player2_list.remove(list_cards_added_player2[i])
                             index_player2 = 0
                         if score == 2:
+                            print("{} has won with {} versus {}".format(player2_name, player1_list[player2_card_index],
+                                                                        player1_list[player1_card_index]))
                             # here we will pick a number of random cards to add or remove to the list based on the list with less elements
                             if len(player1_list) > len(player2_list):
                                 random_card_number = random.randint(0, len(player2_list) - 1)
